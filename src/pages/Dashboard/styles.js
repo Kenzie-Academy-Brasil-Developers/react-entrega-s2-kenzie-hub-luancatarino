@@ -1,0 +1,73 @@
+import styled from "styled-components";
+
+export const Header = styled.div`
+    display: flex;
+    margin: 50px auto 20px auto;
+    justify-content: space-between;
+    width: 90%;
+
+    button {
+        background: var(--grey-3);
+        color: var(--grey-0);
+        padding: 0px 16px;
+        border-radius: 4px;
+        border: 2px solid var(--grey-3);
+        font-weight: 600;
+        line-height: 23px;
+    }
+`;
+
+export const User = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    text-align: left;
+    margin: 30px auto;
+
+    h1 {
+        color: var(--grey-0);
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    p {
+        color: var(--grey-1);
+        font-weight: 400;
+        line-height: 18px;
+        font-size: 14px;
+        margin-top: 15px;
+    }
+`;
+export const Container = styled.div`
+    hr {
+        border: 1px solid var(--grey-3);
+    }
+`;
+
+export const Content = styled.div`
+    margin: 30px auto;
+    width: 90%;
+
+    .addTech {
+        display: flex;
+        justify-content: space-between;
+
+        h2 {
+            color: var(--grey-0);
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        button {
+            width: 20px;
+            height: 20px;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--grey-0);
+            background: var(--grey-3);
+            border: 1px solid var(--grey-3);
+            border-radius: 4px;
+        }
+    }
+`;
