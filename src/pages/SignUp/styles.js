@@ -25,6 +25,7 @@ export const Form = styled.div`
     margin: 0 auto;
     color: var(--grey-0);
     height: 80vh;
+    border-radius: 4px;
 
     div {
         text-align: center;
@@ -58,8 +59,8 @@ export const Form = styled.div`
             color: var(--grey-0);
             font-weight: 400;
             font-size: 13px;
-            margin-bottom: -15px;
-            margin-left: 3px;
+            margin-left: 5px;
+            margin-top: 10px;
         }
 
         input,
@@ -72,11 +73,18 @@ export const Form = styled.div`
             height: 30px;
         }
 
+        .inputError {
+            border: 1px solid var(--red-1);
+            ::placeholder {
+                color: var(--red-1);
+            }
+        }
+        
         span {
             color:red;
             font-size: 12px;
-            margin-left: 3px;
-            margin-top: -20px;
+            margin-left: 5px;
+            margin-top: 3px;
         }
 
         button {

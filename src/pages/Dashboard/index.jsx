@@ -1,24 +1,27 @@
 import Logo from "../../assets/Logo.svg";
-import { Header, User, Container, Content } from "./styles.js";
+import { Header, User, Container, Content, Card } from "./styles.js";
 import { kenzieHubApi } from "../../api";
 import { useState, useEffect } from "react";
 import { Redirect, useHistory } from "react-router-dom";
+import RegisterTech from "../RegisterTech";
 
-function Dashboard({ authenticated, setAuthenticated }) {
+function Dashboard({ setAuthenticated }) {
     const [user, setUser] = useState({});
     const [techs, setTechs] = useState([]);
+    const [showModal, setShowModal] = useState(false);
 
-    const history = useHistory()
+    const history = useHistory();
 
     const back = () => {
         localStorage.clear();
         history.push("/login");
+        setAuthenticated(false);
     };
 
     const userId = JSON.parse(localStorage.getItem("KenzieHub-User"));
     console.log(userId);
 
-    useEffect(() => {
+    const loadData = () => {
         kenzieHubApi.get(`/users/${userId}`).then((response) => {
             const newUser = {
                 name: response.data.name,
@@ -27,14 +30,15 @@ function Dashboard({ authenticated, setAuthenticated }) {
             setUser(newUser);
             setTechs(response.data.techs);
         });
+    };
+
+    useEffect(() => {
+        loadData();
     }, []);
 
-    console.log(techs);
-
-    
-//     if (!authenticated) {
-//         return <Redirect to="/login" />;
-//    }
+    //     if (!authenticated) {
+    //         return <Redirect to="/login" />;
+    //    }
 
     return (
         <Container>
@@ -51,9 +55,19 @@ function Dashboard({ authenticated, setAuthenticated }) {
             <Content>
                 <div className="addTech">
                     <h2>Tecnologias</h2>
-                    <button>+</button>
+                    <button onClick={() => setShowModal(true)}>+</button>
+                    {showModal && <RegisterTech setShowModal={setShowModal} loadData={loadData} />}
                 </div>
-                <div className="techs"></div>
+                <div className="techs">
+                    {techs.map((tech) => {
+                        return (
+                            <Card >
+                                <h4>{tech.title}</h4>
+                                <p>{tech.status}</p>
+                            </Card>
+                        );
+                    })}
+                </div>
             </Content>
         </Container>
     );

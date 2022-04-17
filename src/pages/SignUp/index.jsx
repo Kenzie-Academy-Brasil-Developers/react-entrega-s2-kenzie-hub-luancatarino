@@ -63,7 +63,7 @@ function SignUp({ handleNavigation, authenticated, setAuthenticated }) {
             })
             .catch((err) => {
                 console.log(err);
-                toast.error(err.message);
+                toast.error("Erro ao criar a conta");
             });
     };
 
@@ -84,19 +84,19 @@ function SignUp({ handleNavigation, authenticated, setAuthenticated }) {
                 </div>
                 <form onSubmit={handleSubmit(handleSignUp)}>
                     <label>Nome</label>
-                    <input type="text" placeholder="Digite aqui seu nome" {...register("name")} />
+                    <input type="text" placeholder="Digite aqui seu nome" {...register("name")} className={`${errors.name? "inputError" : ""}`}/>
                     {errors.name && <span>{errors.name.message}</span>}
                     <label>E-mail</label>
-                    <input type="email" placeholder="Digite aqui seu e-mail" {...register("email")} />
+                    <input type="email" placeholder="Digite aqui seu e-mail" {...register("email")} className={`${errors.email? "inputError" : ""}`}/>
                     {errors.email && <span>{errors.email.message}</span>}
                     <label>Senha</label>
-                    <input type="password" placeholder="Digite aqui sua senha" {...register("password")} />
+                    <input type="password" placeholder="Digite aqui sua senha" {...register("password")} className={`${errors.password? "inputError" : ""}`}/>
                     {errors.password && <span>{errors.password.message}</span>}
                     <label>Confirmar senha</label>
-                    <input type="password" placeholder="Confirme sua senha" {...register("confirmPassword")} />
+                    <input type="password" placeholder="Confirme sua senha" {...register("confirmPassword")} className={`${errors.confirmPassword? "inputError" : ""}`} />
                     {errors.confirmPassword && <span>{errors.confirmPassword.message}</span>}
                     <label>Selecionar Módulo</label>
-                    <select {...register("course_module")}>
+                    <select {...register("course_module")} className={`${errors.course_module? "inputError" : ""}`}>
                         <option value="default" disabled hidden>
                             Escolha o seu módulo
                         </option>

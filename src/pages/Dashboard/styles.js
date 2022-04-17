@@ -70,4 +70,42 @@ export const Content = styled.div`
             border-radius: 4px;
         }
     }
+
+    .techs {
+        margin: 20px auto;
+        background: var(--grey-3);
+        border-radius: 4px;
+        padding: 10px;
+
+        h1 {
+            color: white;
+        }
+    }
+`;
+
+export const Card = styled.div`
+    height: 35px;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    background: var(--grey-4);
+    margin: 7px auto 7px auto;
+    border-radius: 4px;
+    align-items: center;
+    :hover {
+        background: var(--grey-2)
+    }
+
+    h4 {
+        color: var(--grey-0);
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+    p {
+        color: var(--grey-1);
+        font-weight: 400;
+        font-size: 12px;
+    }
 `;

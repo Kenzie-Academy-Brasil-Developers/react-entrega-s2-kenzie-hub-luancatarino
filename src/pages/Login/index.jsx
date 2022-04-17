@@ -22,15 +22,11 @@ function Login({ authenticated, setAuthenticated }) {
         resolver: yupResolver(schema),
     });
 
-    
-
     const history = useHistory();
 
-  
-
     const handleSignUp = () => {
-        history.push('/signup')
-      }
+        history.push("/signup");
+    };
     const handleLogin = async (data) => {
         const response = await kenzieHubApi.post("/sessions", data).catch((err) => {
             toast.error("E-mail ou senha inválidos");
@@ -49,7 +45,6 @@ function Login({ authenticated, setAuthenticated }) {
         return <Redirect to="/dashboard" />;
     }
 
-
     return (
         <div>
             <Header>
@@ -61,17 +56,27 @@ function Login({ authenticated, setAuthenticated }) {
                 </div>
                 <form onSubmit={handleSubmit(handleLogin)}>
                     <label>E-mail</label>
-                    <input type="email" placeholder="Digite aqui seu e-mail" {...register("email")} />
+                    <input
+                        type="email"
+                        placeholder="Digite aqui seu e-mail"
+                        {...register("email")}
+                        className={`${errors.email ? "inputError" : ""}`}
+                    />
                     {errors.email && <span>{errors.email.message}</span>}
                     <label>Senha</label>
-                    <input type="password" placeholder="Digite aqui sua senha" {...register("password")} />
+                    <input
+                        type="password"
+                        placeholder="Digite aqui sua senha"
+                        {...register("password")}
+                        className={`${errors.password ? "inputError" : ""}`}
+                    />
                     {errors.password && <span>{errors.password.message}</span>}
                     <button type="submit">Entrar</button>
                     <p>Ainda não possui uma conta?</p>
-                    <button onClick={handleSignUp} className="btnSignUp">
-                        Cadastre-se
-                    </button>
                 </form>
+                <button onClick={handleSignUp} className="btnSignUp">
+                    Cadastre-se
+                </button>
             </Form>
         </div>
     );

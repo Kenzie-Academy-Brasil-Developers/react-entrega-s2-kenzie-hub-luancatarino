@@ -22,9 +22,11 @@ export const Form = styled.div`
     display: flex;
     flex-direction: column;
     width: 90%;
-    margin: 0 auto;
+    margin: 0px auto;
     color: var(--grey-0);
-    height: 80vh;
+    height: 70vh;
+    border-radius: 4px;
+    padding: 20px 0;
 
     div {
         text-align: center;
@@ -49,18 +51,18 @@ export const Form = styled.div`
 
     form {
         width: 90%;
-        margin: 0 auto;
+        margin: 30px auto;
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
+        justify-content: space-between;
         height: 90%;
 
         label {
             color: var(--grey-0);
             font-weight: 400;
             font-size: 13px;
-            margin-bottom: -30px;
-            margin-left: 3px;
+            margin-left: 5px;
+            margin-top: 10px;
         }
 
         input,
@@ -73,11 +75,18 @@ export const Form = styled.div`
             height: 50px;
         }
 
+        .inputError {
+            border: 1px solid var(--red-1);
+            ::placeholder {
+                color: var(--red-1);
+            }
+        }
+        
         span {
             color:red;
             font-size: 12px;
-            margin-left: 3px;
-            margin-top: -20px;
+            margin-left: 5px;
+            margin-top: 3px;
         }
 
         button {
@@ -98,13 +107,19 @@ export const Form = styled.div`
             font-weight: 600;
             font-size: 12px;
         }
-
-        .btnSignUp {
+    }
+    .btnSignUp {
+            width: 90%;
+            height: 50px;
+            font-size: 15px;
+            font-weight: 500;
+            margin: 0 auto;
+            color: var(--grey-0);
             background: var(--grey-1);
             border: 1px solid var(--grey-1);
+            border-radius: 3px;
             :hover {
                 background: var(--grey-2);
             }
         }
-    }
 `;
