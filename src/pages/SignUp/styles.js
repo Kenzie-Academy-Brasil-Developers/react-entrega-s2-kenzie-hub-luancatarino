@@ -5,7 +5,9 @@ export const Header = styled.div`
     margin: 50px auto 20px auto;
     justify-content: space-between;
     width: 90%;
-
+    @media (min-width: 400px) {
+        width: 400px;
+    }
     button {
         background: var(--grey-3);
         color: var(--grey-0);
@@ -26,6 +28,9 @@ export const Form = styled.div`
     color: var(--grey-0);
     height: 80vh;
     border-radius: 4px;
+    @media (min-width: 400px) {
+        width: 400px;
+    }
 
     div {
         text-align: center;

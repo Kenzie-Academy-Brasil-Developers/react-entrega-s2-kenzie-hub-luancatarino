@@ -5,6 +5,9 @@ export const Header = styled.div`
     margin: 50px auto 20px auto;
     justify-content: space-between;
     width: 90%;
+    @media (min-width: 768px) {
+        width: 700px;
+    }
 
     button {
         background: var(--grey-3);
@@ -21,8 +24,15 @@ export const User = styled.div`
     display: flex;
     flex-direction: column;
     width: 90%;
-    text-align: left;
+    
     margin: 30px auto;
+    align-items: left;
+    @media (min-width: 768px) {
+        width: 700px;
+        flex-direction: row;
+        
+        justify-content: space-between;
+    }
 
     h1 {
         color: var(--grey-0);
@@ -40,6 +50,7 @@ export const User = styled.div`
     }
 `;
 export const Container = styled.div`
+
     hr {
         border: 1px solid var(--grey-3);
     }
@@ -48,6 +59,9 @@ export const Container = styled.div`
 export const Content = styled.div`
     margin: 30px auto;
     width: 90%;
+    @media (min-width: 768px) {
+        width: 700px;
+    }
 
     .addTech {
         display: flex;

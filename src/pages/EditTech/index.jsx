@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { kenzieHubApi } from "../../api";
 import { toast } from "react-toastify";
 
-function RegisterTech({ setModalAdd, loadData}) {
+function EditTech({ setModalEdit, loadData }) {
     const token = JSON.parse(localStorage.getItem("KenzieHub-Token"));
     console.log(token);
 
@@ -22,8 +22,8 @@ function RegisterTech({ setModalAdd, loadData}) {
         resolver: yupResolver(schema),
     });
 
-    const handleRegisterTech = (data) => {
-        console.log(data.status)
+    const handleEditTech = (data) => {
+        console.log(data.status);
         kenzieHubApi
             .post(
                 `/users/techs`,
@@ -38,26 +38,28 @@ function RegisterTech({ setModalAdd, loadData}) {
                 }
             )
             .then((response) => {
-                toast.success("Tecnologia adicionada com sucesso")
-                loadData()
-                setModalAdd(false)
+                toast.success("Tecnologia adicionada com sucesso");
+                loadData();
+                setModalEdit(false);
             })
             .catch((err) => {
                 toast.error("Erro ao cadastrar tecnologia");
             });
     };
 
+    const handleDeleteTech = () => {};
+
     return (
         <Container>
             <Content>
                 <Header>
                     <div className="navBar">
-                        <h3>Cadastrar Tecnologia</h3>
-                        <button onClick={() => setModalAdd(false)}>x</button>
+                        <h3>Editar Tecnologia</h3>
+                        <button onClick={() => setModalEdit(false)}>x</button>
                     </div>
                 </Header>
                 <Form>
-                    <form onSubmit={handleSubmit(handleRegisterTech)}>
+                    <form onSubmit={handleSubmit(handleEditTech)}>
                         <label>Nome</label>
                         <input
                             type="text"
@@ -72,9 +74,14 @@ function RegisterTech({ setModalAdd, loadData}) {
                             <option value="Intermediário">Intermediário</option>
                             <option value="Avançado">Avançado</option>
                         </select>
-                        <button className="btnAddTech" type="submit">
-                            Cadastrar Tecnologia
-                        </button>
+                        <div classNames="buttons">
+                            <button className="btnEditTech" type="submit">
+                                Salvar Alterações
+                            </button>
+                            <button className="btnDeleteTech" onClick={handleDeleteTech}>
+                                Excluir
+                            </button>
+                        </div>
                     </form>
                 </Form>
             </Content>
@@ -82,4 +89,4 @@ function RegisterTech({ setModalAdd, loadData}) {
     );
 }
 
-export default RegisterTech;
+export default EditTech;

@@ -11,7 +11,6 @@ export const Container = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    
 `;
 
 export const Content = styled.div`
@@ -103,18 +102,43 @@ export const Form = styled.div`
             margin-top: 3px;;
         }
 
-        .btnAddTech {
+        div {
+            display:flex;
+            justify-content: space-between;
+            background-color: var(--grey-);
             width: 100%;
+        }
+
+        .btnEditTech {
+            flex: 2;
             margin-top: 15px;
             font-size: 13px;
             font-weight: 500;
             color: var(--grey-0);
+            margin-right: 10px;
             background: var(--red-0);
             height: 30px;
             border: 1px solid var(--red-0);
             border-radius: 3px;
             :hover {
                 background: var(--red-1);
+                border: 1px solid var(--red-1);
+            }
+        }
+
+        .btnDeleteTech {
+            flex: 1;
+            margin-top: 15px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--grey-0);
+            background: var(--grey-1);
+            height: 30px;
+            border: 1px solid var(--grey-1);
+            border-radius: 3px;
+            :hover {
+                background: var(--grey-2);
+                border: 1px solid var(--grey-2);
             }
         }
     }

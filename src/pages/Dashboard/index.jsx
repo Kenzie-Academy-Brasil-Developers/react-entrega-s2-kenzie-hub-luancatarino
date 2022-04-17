@@ -4,11 +4,14 @@ import { kenzieHubApi } from "../../api";
 import { useState, useEffect } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import RegisterTech from "../RegisterTech";
+import EditTech from "../EditTech";
 
 function Dashboard({ setAuthenticated }) {
     const [user, setUser] = useState({});
     const [techs, setTechs] = useState([]);
-    const [showModal, setShowModal] = useState(false);
+    const [technology, setTechnology] = useState({});
+    const [modalAdd, setModalAdd] = useState(false);
+    const [modalEdit, setModalEdit] = useState(false);
 
     const history = useHistory();
 
@@ -55,18 +58,19 @@ function Dashboard({ setAuthenticated }) {
             <Content>
                 <div className="addTech">
                     <h2>Tecnologias</h2>
-                    <button onClick={() => setShowModal(true)}>+</button>
-                    {showModal && <RegisterTech setShowModal={setShowModal} loadData={loadData} />}
+                    <button onClick={() => setModalAdd(true)}>+</button>
+                    {modalAdd && <RegisterTech setModalAdd={setModalAdd} loadData={loadData} />}
                 </div>
                 <div className="techs">
                     {techs.map((tech) => {
                         return (
-                            <Card >
+                            <Card onClick={() => setModalEdit(true)}>
                                 <h4>{tech.title}</h4>
                                 <p>{tech.status}</p>
                             </Card>
                         );
                     })}
+                    {modalEdit && <EditTech setModalEdit={setModalEdit} loadData={loadData} />}
                 </div>
             </Content>
         </Container>

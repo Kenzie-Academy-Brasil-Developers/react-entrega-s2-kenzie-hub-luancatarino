@@ -27,6 +27,9 @@ export const Form = styled.div`
     height: 70vh;
     border-radius: 4px;
     padding: 20px 0;
+    @media (min-width: 400px) {
+        width: 400px;
+    }
 
     div {
         text-align: center;
@@ -73,6 +76,7 @@ export const Form = styled.div`
             padding: 0 12px;
             border-radius: 3px;
             height: 50px;
+           
         }
 
         .inputError {
@@ -81,9 +85,9 @@ export const Form = styled.div`
                 color: var(--red-1);
             }
         }
-        
+
         span {
-            color:red;
+            color: red;
             font-size: 12px;
             margin-left: 5px;
             margin-top: 3px;
@@ -109,17 +113,17 @@ export const Form = styled.div`
         }
     }
     .btnSignUp {
-            width: 90%;
-            height: 50px;
-            font-size: 15px;
-            font-weight: 500;
-            margin: 0 auto;
-            color: var(--grey-0);
-            background: var(--grey-1);
-            border: 1px solid var(--grey-1);
-            border-radius: 3px;
-            :hover {
-                background: var(--grey-2);
-            }
+        width: 90%;
+        height: 50px;
+        font-size: 15px;
+        font-weight: 500;
+        margin: 0 auto;
+        color: var(--grey-0);
+        background: var(--grey-1);
+        border: 1px solid var(--grey-1);
+        border-radius: 3px;
+        :hover {
+            background: var(--grey-2);
         }
+    }
 `;
