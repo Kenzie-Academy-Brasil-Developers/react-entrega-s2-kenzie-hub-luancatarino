@@ -59,7 +59,7 @@ function SignUp({ handleNavigation, authenticated}) {
             .post("/users", userData)
             .then((response) => {
                 toast.success("Conta criada com sucesso");
-                history.push("/login");
+                history.push("/");
             })
             .catch((err) => {
                 console.log(err);
@@ -75,7 +75,7 @@ function SignUp({ handleNavigation, authenticated}) {
         <div>
             <Header>
                 <img src={Logo} alt="logo"></img>
-                <button onClick={() => handleNavigation("/login")}>Voltar</button>
+                <button onClick={() => handleNavigation("/")}>Voltar</button>
             </Header>
             <Form>
                 <div>

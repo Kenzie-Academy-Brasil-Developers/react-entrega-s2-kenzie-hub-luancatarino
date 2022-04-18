@@ -17,7 +17,7 @@ function Dashboard({ authenticated, setAuthenticated }) {
 
     const back = () => {
         localStorage.clear();
-        history.push("/login");
+        history.push("/");
         setAuthenticated(false);
     };
 
@@ -39,7 +39,7 @@ function Dashboard({ authenticated, setAuthenticated }) {
     }, []);
 
     if (!authenticated) {
-        return <Redirect to="/login" />;
+        return <Redirect to="/" />;
     }
 
     return (

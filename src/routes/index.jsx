@@ -30,7 +30,7 @@ function Routes() {
             <Route exact path="/signup">
                 <SignUp handleNavigation={handleNavigation} authenticated={authenticated} />
             </Route>
-            <Route exact path="/login">
+            <Route exact path="/">
                 <Login authenticated={authenticated} setAuthenticated={setAuthenticated} />
             </Route>
         </Switch>
