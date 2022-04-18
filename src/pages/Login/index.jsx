@@ -38,7 +38,7 @@ function Login({ authenticated, setAuthenticated }) {
         localStorage.setItem("KenzieHub-User", JSON.stringify(user.id));
         toast.success("Login realizado com sucesso");
         setAuthenticated(true);
-        history.push("/Dashboard");
+        history.push("/dashboard");
     };
 
     if (authenticated) {

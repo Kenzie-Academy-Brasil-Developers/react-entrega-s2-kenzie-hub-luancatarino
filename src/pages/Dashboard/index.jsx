@@ -6,7 +6,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import RegisterTech from "../RegisterTech";
 import EditTech from "../EditTech";
 
-function Dashboard({ setAuthenticated }) {
+function Dashboard({ authenticated, setAuthenticated }) {
     const [user, setUser] = useState({});
     const [techs, setTechs] = useState([]);
     const [technology, setTechnology] = useState({});
@@ -22,7 +22,6 @@ function Dashboard({ setAuthenticated }) {
     };
 
     const userId = JSON.parse(localStorage.getItem("KenzieHub-User"));
-    console.log(userId);
 
     const loadData = () => {
         kenzieHubApi.get(`/users/${userId}`).then((response) => {
@@ -39,9 +38,9 @@ function Dashboard({ setAuthenticated }) {
         loadData();
     }, []);
 
-    //     if (!authenticated) {
-    //         return <Redirect to="/login" />;
-    //    }
+    if (!authenticated) {
+        return <Redirect to="/login" />;
+    }
 
     return (
         <Container>
@@ -63,14 +62,19 @@ function Dashboard({ setAuthenticated }) {
                 </div>
                 <div className="techs">
                     {techs.map((tech) => {
+                        function handleTech() {
+                            setTechnology(tech);
+                            setModalEdit(true);
+                        }
+
                         return (
-                            <Card onClick={() => setModalEdit(true)}>
+                            <Card key={tech.id} onClick={() => handleTech()}>
                                 <h4>{tech.title}</h4>
                                 <p>{tech.status}</p>
                             </Card>
                         );
                     })}
-                    {modalEdit && <EditTech setModalEdit={setModalEdit} loadData={loadData} />}
+                    {modalEdit && <EditTech setModalEdit={setModalEdit} loadData={loadData} technology={technology} />}
                 </div>
             </Content>
         </Container>

@@ -18,6 +18,7 @@ function App() {
                 pauseOnFocusLoss
                 draggable
                 pauseOnHover
+                toastStyle={{ backgroundColor: "#343b41", color: "#f8f9fa"}}
             />
         </>
     );

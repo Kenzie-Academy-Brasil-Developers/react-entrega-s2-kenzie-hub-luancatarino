@@ -62,6 +62,7 @@ export const Form = styled.div`
     background: var(--grey-3);
     margin: 0 auto;
     width: 90%;
+    
 
     form {
         display: flex;

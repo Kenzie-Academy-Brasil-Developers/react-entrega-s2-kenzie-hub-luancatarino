@@ -28,10 +28,10 @@ function Routes() {
                 <Dashboard authenticated={authenticated} setAuthenticated={setAuthenticated} />
             </Route>
             <Route exact path="/signup">
-                <SignUp handleNavigation={handleNavigation} authenticated={authenticated} setAuthenticated={setAuthenticated} />
+                <SignUp handleNavigation={handleNavigation} authenticated={authenticated} />
             </Route>
             <Route exact path="/login">
-                <Login handleNavigation={handleNavigation} authenticated={authenticated} setAuthenticated={setAuthenticated} />
+                <Login authenticated={authenticated} setAuthenticated={setAuthenticated} />
             </Route>
         </Switch>
     );

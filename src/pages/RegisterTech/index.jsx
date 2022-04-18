@@ -5,9 +5,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { kenzieHubApi } from "../../api";
 import { toast } from "react-toastify";
 
-function RegisterTech({ setModalAdd, loadData}) {
+function RegisterTech({ setModalAdd, loadData }) {
     const token = JSON.parse(localStorage.getItem("KenzieHub-Token"));
-    console.log(token);
 
     const schema = yup.object().shape({
         title: yup.string().required("Campo obrigatório").min(2, "Mínimo 2 caracteres").max(16, "Máximo 16 caracteres"),
@@ -23,7 +22,6 @@ function RegisterTech({ setModalAdd, loadData}) {
     });
 
     const handleRegisterTech = (data) => {
-        console.log(data.status)
         kenzieHubApi
             .post(
                 `/users/techs`,
@@ -38,9 +36,9 @@ function RegisterTech({ setModalAdd, loadData}) {
                 }
             )
             .then((response) => {
-                toast.success("Tecnologia adicionada com sucesso")
-                loadData()
-                setModalAdd(false)
+                toast.success("Tecnologia adicionada com sucesso");
+                loadData();
+                setModalAdd(false);
             })
             .catch((err) => {
                 toast.error("Erro ao cadastrar tecnologia");

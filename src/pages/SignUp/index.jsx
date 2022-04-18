@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { Redirect } from "react-router-dom";
 
-function SignUp({ handleNavigation, authenticated, setAuthenticated }) {
+function SignUp({ handleNavigation, authenticated}) {
     const formSchema = yup.object().shape({
         name: yup
             .string()
@@ -20,11 +20,11 @@ function SignUp({ handleNavigation, authenticated, setAuthenticated }) {
         password: yup
             .string()
             .required("Senha obrigatória")
-            .min(8, "Mínimo 8 caracteres")
+            .min(6, "Mínimo 6 caracteres")
             .max(16, "Máximo 16 caracteres")
             .matches(
                 "^(?=.*[A-Z])(?=.*[!#@$%&])(?=.*[0-9])(?=.*[a-z]).{8,15}$",
-                "A senha deve conter ao menos uma letra maiúsculo, uma minúscula, um número e um caracter especial"
+                "A senha deve conter ao menos uma letra maiúsculoa, uma minúscula, um número e um caracter especial"
             ),
         confirmPassword: yup
             .string()

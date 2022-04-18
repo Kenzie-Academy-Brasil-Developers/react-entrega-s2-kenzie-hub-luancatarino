@@ -24,13 +24,13 @@ export const User = styled.div`
     display: flex;
     flex-direction: column;
     width: 90%;
-    
+
     margin: 30px auto;
     align-items: left;
     @media (min-width: 768px) {
         width: 700px;
         flex-direction: row;
-        
+
         justify-content: space-between;
     }
 
@@ -50,7 +50,6 @@ export const User = styled.div`
     }
 `;
 export const Container = styled.div`
-
     hr {
         border: 1px solid var(--grey-3);
     }
@@ -89,7 +88,7 @@ export const Content = styled.div`
         margin: 20px auto;
         background: var(--grey-3);
         border-radius: 4px;
-        padding: 10px;
+        padding: 15px;
 
         h1 {
             color: white;
@@ -98,17 +97,17 @@ export const Content = styled.div`
 `;
 
 export const Card = styled.div`
-    height: 35px;
+    height: 45px;
     display: flex;
     justify-content: space-between;
-    padding: 5px 10px;
+    padding: 5px 15px;
     margin-bottom: 10px;
     background: var(--grey-4);
-    margin: 7px auto 7px auto;
+    margin: 8px auto 8px auto;
     border-radius: 4px;
     align-items: center;
     :hover {
-        background: var(--grey-2)
+        background: var(--grey-2);
     }
 
     h4 {

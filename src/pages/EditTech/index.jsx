@@ -5,12 +5,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { kenzieHubApi } from "../../api";
 import { toast } from "react-toastify";
 
-function EditTech({ setModalEdit, loadData }) {
+function EditTech({ setModalEdit, loadData, technology }) {
     const token = JSON.parse(localStorage.getItem("KenzieHub-Token"));
-    console.log(token);
+    console.log(technology.id);
 
     const schema = yup.object().shape({
-        title: yup.string().required("Campo obrigatório").min(2, "Mínimo 2 caracteres").max(16, "Máximo 16 caracteres"),
+        // title: yup.string().required("Campo obrigatório").min(2, "Mínimo 2 caracteres").max(16, "Máximo 16 caracteres"),
         status: yup.string().required("Campo obrigatório"),
     });
 
@@ -23,14 +23,10 @@ function EditTech({ setModalEdit, loadData }) {
     });
 
     const handleEditTech = (data) => {
-        console.log(data.status);
         kenzieHubApi
-            .post(
-                `/users/techs`,
-                {
-                    title: data.title,
-                    status: data.status,
-                },
+            .put(
+                `/users/techs/${technology.id}`,
+                { status: data.status },
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -38,16 +34,31 @@ function EditTech({ setModalEdit, loadData }) {
                 }
             )
             .then((response) => {
-                toast.success("Tecnologia adicionada com sucesso");
+                toast.success("Tecnologia editada com sucesso");
                 loadData();
                 setModalEdit(false);
             })
             .catch((err) => {
-                toast.error("Erro ao cadastrar tecnologia");
+                // toast.error("Erro ao editar tecnologia");
             });
     };
 
-    const handleDeleteTech = () => {};
+    const handleDeleteTech = () => {
+        kenzieHubApi
+            .delete(`/users/techs/${technology.id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((response) => {
+                loadData();
+                setModalEdit(false);
+            })
+            .catch((err) => {
+                toast.error("Erro ao excluir tecnologia");
+                console.log(err);
+            });
+    };
 
     return (
         <Container>
@@ -63,19 +74,20 @@ function EditTech({ setModalEdit, loadData }) {
                         <label>Nome</label>
                         <input
                             type="text"
-                            className={`${errors.title ? "inputError" : ""}`}
-                            placeholder="Digite aqui a tecnologia"
-                            {...register("title")}
+                            // className={`${errors.title ? "inputError" : ""}`}
+                            placeholder={`${technology.title}`}
+                            disabled
+                            // {...register("title")}
                         />
-                        {errors.title && <span>{errors.title.message}</span>}
+                        {/* {errors.title && <span>{errors.title.message}</span>} */}
                         <label>Selecionar Nível</label>
                         <select {...register("status")} className={`${errors.status ? "inputError" : ""}`}>
-                            <option value="Iniciante">Iniciante</option>
-                            <option value="Intermediário">Intermediário</option>
-                            <option value="Avançado">Avançado</option>
+                            <option selected={`${technology.status === "Iniciante" ? "selected" : ""}`}value="Iniciante">Iniciante</option>
+                            <option selected={`${technology.status === "Intermediário" ? "selected" : ""}`} value="Intermediário">Intermediário</option>
+                            <option selected={`${technology.status === "Avançado" ? "selected" : ""}`}value="Avançado">Avançado</option>
                         </select>
                         <div classNames="buttons">
-                            <button className="btnEditTech" type="submit">
+                            <button className="btnEditTech" onClick={handleEditTech} type="submit">
                                 Salvar Alterações
                             </button>
                             <button className="btnDeleteTech" onClick={handleDeleteTech}>
