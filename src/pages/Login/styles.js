@@ -24,7 +24,7 @@ export const Form = styled.div`
     width: 90%;
     margin: 0px auto;
     color: var(--grey-0);
-    height: 70vh;
+    height: 60vh;
     border-radius: 4px;
     padding: 20px 0;
     @media (min-width: 400px) {
