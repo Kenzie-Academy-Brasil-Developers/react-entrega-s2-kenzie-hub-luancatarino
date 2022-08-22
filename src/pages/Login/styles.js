@@ -24,11 +24,12 @@ export const Form = styled.div`
     width: 90%;
     margin: 0px auto;
     color: var(--grey-0);
-    height: 60vh;
+    height: 450px;
     border-radius: 4px;
     padding: 20px 0;
     @media (min-width: 400px) {
         width: 400px;
+        height: 500px;
     }
 
     div {
